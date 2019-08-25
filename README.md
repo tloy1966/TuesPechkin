@@ -1,7 +1,8 @@
-In AnyCPU version
+In AnyCPU version, just include dlls, and get converter from PDFHelper.Factory
 - Both x64 and x86 version are included
-- IIS-based or winform Evnironment are also works fine.
-Just include dlls, and get converter from PDFHelper.Factory
+- IIS-based or winform Evnironment are also works fine
+
+
 
 # How to use 
 ```csharp
