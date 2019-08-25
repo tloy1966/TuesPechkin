@@ -1,4 +1,6 @@
-In AnyCPU version, Both x64 and x86 version are included, and IIS-based or winform Evnironment are also works fine.
+In AnyCPU version
+- Both x64 and x86 version are included
+- IIS-based or winform Evnironment are also works fine.
 Just include dlls, and get converter from PDFHelper.Factory
 
 # How to use 
