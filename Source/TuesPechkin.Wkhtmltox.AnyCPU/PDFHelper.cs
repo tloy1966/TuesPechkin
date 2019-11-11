@@ -9,7 +9,7 @@ namespace TuesPechkin.Wkhtmltox.AnyCPU
 			/// <summary>
 			/// The static readonly locker
 			/// </summary>
-			private static readonly object Locker = new object();
+			private static readonly object locker = new object();
 
 			/// <summary>
 			/// Pdf converter
@@ -22,29 +22,27 @@ namespace TuesPechkin.Wkhtmltox.AnyCPU
 			/// <returns>Pdf converter</returns>
 			public static IConverter GetConverter()
 			{
-				lock (Locker)
+				lock (locker)
 				{
 					if (converter != null)
 					{
 						return converter;
 					}
-
-					var tempFolderDeployment = new TempFolderDeployment();
-					var winAnyCpuEmbeddedDeployment = new WinAnyCPUEmbeddedDeployment(tempFolderDeployment);
-					IToolset toolSet;
-					if (HostingEnvironment.IsHosted)
-					{
-						toolSet = new RemotingToolset<PdfToolset>(winAnyCpuEmbeddedDeployment);
-					}
-					else
-					{
-						toolSet = new PdfToolset(winAnyCpuEmbeddedDeployment);
-					}
-
-					converter = new ThreadSafeConverter(toolSet);
 				}
 
-				return converter;
+				var tempFolderDeployment = new TempFolderDeployment();
+				var winAnyCpuEmbeddedDeployment = new WinAnyCPUEmbeddedDeployment(tempFolderDeployment);
+				IToolset toolSet;
+				if (HostingEnvironment.IsHosted)
+				{
+					toolSet = new RemotingToolset<PdfToolset>(winAnyCpuEmbeddedDeployment);
+				}
+				else
+				{
+					toolSet = new PdfToolset(winAnyCpuEmbeddedDeployment);
+				}
+
+				return new ThreadSafeConverter(toolSet);
 			}
 		}
 	}
