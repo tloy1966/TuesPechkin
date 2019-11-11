@@ -1,3 +1,17 @@
+In AnyCPU version, just include dlls, and get converter from PDFHelper.Factory
+- Both x64 and x86 version are included
+- IIS-based or winform Evnironment are also works fine
+
+
+
+# How to use 
+```csharp
+using TuesPechkin.Wkhtmltox.AnyCPU;
+
+var converter = PDFHelper.Factory.GetConverter();
+var result = converter.Convert(This.Document);
+```
+
 #TuesPechkin
 TuesPechkin is a .NET Wrapper for the [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf) library. 
 
